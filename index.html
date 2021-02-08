@@ -25,13 +25,13 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="HandleCodeOnProductchange('phone', false)" class="btn btn-default"><i
+                           <button onclick="Handlecodechange('phone', false)" class="btn btn-default"><i
                                  class="fas fa-minus"></i></button>
                            <input id="phone-count" type="text" class="form-control text-center" value="1">
-                           <button onclick="HandleCodeOnProductchange('phone', true)" class="btn btn-default"><i
+                           <button onclick="Handlecodechange('phone', true)" class="btn btn-default"><i
                                  class="fas fa-plus"></i></button>
                         </div>
-                        <h5 id='Phone-Total'>1219</h5>
+                        <h5 id="phone-total">1219</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -45,14 +45,14 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="HandleCodeOnProductchange('case', false)" class="btn btn-default"><i
+                           <button onclick="Handlecodechange('case', false)" class="btn btn-default"><i
                                  class="fas fa-minus"></i></button>
                            <input id="case-count" type="text" class="form-control text-center" value="1">
-                           <button onclick="HandleCodeOnProductchange('case', true)" class="btn btn-default"><i
+                           <button onclick="Handlecodechange('case', true)" class="btn btn-default"><i
                                  class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5 id="case-Total">$59</h5>
+                        <h5 id="case-total">$59</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -84,7 +84,7 @@
 
 
 
-         function HandleCodeOnProductchange(product, MoreProduct) {
+         function Handlecodechange(product, MoreProduct) {
 
 
             const productInput = document.getElementById(product + '-count');
@@ -98,16 +98,20 @@
                productNewCount = productCount - 1;
             }
             productInput.value = productNewCount;
-            let ptotal = 0;
+            let producttotal = 0;
             if (product == 'case') {
-               ptotal = productNewCount * 59;
+               producttotal = productNewCount * 59;
             }
             if (product == 'phone') {
-            ptotal = productNewCount * 1291;
+               
+            producttotal = productNewCount * 1291;
+
+           
 
             }
+            document.getElementById(product + '-total').innerText = '$' + producttotal;
 
-            document.getElementById(product + '-Total').innerText = '$' + ptotal;
+            
          }
          // in case ID : using Onlick=" Past There("HandleCodeOnProduct(true):
          // document.getElementById('case').addEventListener('click', function () {
