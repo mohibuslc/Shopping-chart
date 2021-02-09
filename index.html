@@ -99,20 +99,43 @@
             }
             productInput.value = productNewCount;
             let producttotal = 0;
+            
             if (product == 'case') {
                producttotal = productNewCount * 59;
             }
             if (product == 'phone') {
 
-            producttotal = productNewCount * 1219;
+               producttotal = productNewCount * 1219;
 
-           
+
 
             }
-            document.getElementById(product + '-total').innerText = '$' + producttotal;
 
-            
+            document.getElementById(product + '-total').innerText = '$' + producttotal;
+            calculatorTotal();
+
+
+
+
+
          }
+
+         // Subtotal  function :
+
+
+         function calculatorTotal() {
+
+            const PhoneInput = document.getElementById('phone-count');
+            const phoneCount = parseInt(PhoneInput.value);
+
+            const caseInput = document.getElementById('case-count');
+            const caseCount = parseInt(caseInput.value);
+
+            const totalPrice = phoneCount * 1219 + caseCount * 59;
+            document.getElementById('total-price').innerText = '$' + totalPrice;
+
+         }
+
          // in case ID : using Onlick=" Past There("HandleCodeOnProduct(true):
          // document.getElementById('case').addEventListener('click', function () {
          //HandleCodeOnProduct(true)
@@ -225,18 +248,7 @@
 
 
 
-         // function calculator(){
 
-         //    const PhoneInput =document.getElementById('phone-count');
-         //    const phoneCount = parseInt(PhoneInput.value);
-
-         //    const caseInput = document.getElementById('case-count');
-         //    const caseInput = parseInt(caseInput.value);
-
-         //    const totalprice = phoneCount*1219 + caseCount*59;
-         //    document.getElementById('total-price').innerText + totalprice;
-
-         // }
 
          // document.getElementById('PhoneINC').addEventListener('click', function () {
 
