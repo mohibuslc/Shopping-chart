@@ -8,6 +8,7 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
    <link href="style.css" rel="stylesheet">
+ 
 </head>
 
 <body>
@@ -69,8 +70,8 @@
 
                      <div class="col-md-4 status">
                         <h5 id="total-price">$1,278</h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5 id="tax-total">$0</h5>
+                        <h5 id="Grand-Total">$1,278</h5>
                      </div>
                   </div>
                </div>
@@ -99,7 +100,7 @@
             }
             productInput.value = productNewCount;
             let producttotal = 0;
-            
+
             if (product == 'case') {
                producttotal = productNewCount * 59;
             }
@@ -123,18 +124,6 @@
          // Subtotal  function :
 
 
-         function calculatorTotal() {
-
-            const PhoneInput = document.getElementById('phone-count');
-            const phoneCount = parseInt(PhoneInput.value);
-
-            const caseInput = document.getElementById('case-count');
-            const caseCount = parseInt(caseInput.value);
-
-            const totalPrice = phoneCount * 1219 + caseCount * 59;
-            document.getElementById('total-price').innerText = '$' + totalPrice;
-
-         }
 
          // in case ID : using Onlick=" Past There("HandleCodeOnProduct(true):
          // document.getElementById('case').addEventListener('click', function () {
@@ -241,7 +230,7 @@
          //    const PhoneTotal = PhoneNewCount * 1219;
          //    document.getElementById('Phone-Total').innerText = '$' + PhoneTotal;
          // }
-   // This One for Caseing Opearation :
+         // This One for Caseing Opearation :
 
 
 
@@ -281,7 +270,37 @@
 
          // })
 
+         function calculatorTotal() {
 
+           
+            const phoneCount = getInputvalue('phone');
+
+            
+            
+            const caseCount = getInputvalue('case');
+
+
+            const totalPrice = phoneCount * 1219 + caseCount * 59;
+            document.getElementById('total-price').innerText = '$' + totalPrice;
+
+            const tax = Math.round(totalPrice * 0.1)
+            document.getElementById('tax-total').innerText ='$' + tax;
+
+            const grandtotal = totalPrice+tax;
+            document.getElementById('Grand-Total').innerText = '$' + grandtotal;
+
+
+
+
+         }
+
+         function getInputvalue(product){
+            const productInput = document.getElementById(product+'-count');
+            const productCount = parseInt(productInput.value);
+            return productCount;
+            
+
+         }
 
 
 
